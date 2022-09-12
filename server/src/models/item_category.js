@@ -1,18 +1,12 @@
 'use strict';
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-	class Item_category extends Model {
+	class Item_Category extends Model {
 		static associate({Item}) {
-			this.hasMany(Item, {foreignKey: 'categId'});
+			this.hasMany(Item, {foreignKey: 'categ_id'});
 		}
 	}
-	Item_category.init({
-		categId: {
-			allowNull: false,
-			autoIncrement: true,
-			primaryKey: true,
-			type: DataTypes.INTEGER
-		},
+	Item_Category.init({
 		title: {
 			type: DataTypes.STRING,
 			allowNull: false,
@@ -21,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
 		description: DataTypes.TEXT,
 	}, {
 		sequelize,
-		modelName: 'Item_category',
-		timestamps: false
+		modelName: 'Item_Category',
+		tableName:'item_categories'
 	});
-	return Item_category;
+	return Item_Category;
 };

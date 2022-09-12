@@ -1,43 +1,43 @@
 'use strict';
 module.exports = {
 	async up(queryInterface, Sequelize) {
-		await queryInterface.createTable('Items', {
-			itemId: {
+		await queryInterface.createTable('items', {
+			id: {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
 				type: Sequelize.INTEGER
 			},
-			categId: {
+			categ_id: {
 				type: Sequelize.INTEGER,
 				allowNull: false,
 				references: {
-					model: 'Item_categories',
-					key: 'categId',
+					model: 'item_categories',
+					key: 'id',
 				},
 			},
-			typeId: {
+			type_id: {
 				type: Sequelize.INTEGER,
 				allowNull: false,
 				references: {
-					model: 'Item_types',
-					key: 'typeId',
+					model: 'item_types',
+					key: 'id',
 				},
 			},
-			modelId: {
+			model_id: {
 				type: Sequelize.INTEGER,
 				allowNull: false,
 				references: {
-					model: 'Item_models',
-					key: 'modelId',
+					model: 'item_models',
+					key: 'id',
 				},
 			},
-			storeId: {
+			store_id: {
 				type: Sequelize.INTEGER,
 				allowNull: false,
 				references: {
-					model: 'Stores',
-					key: 'storeId',
+					model: 'stores',
+					key: 'id',
 				},
 			},
 			title: {
@@ -56,6 +56,6 @@ module.exports = {
 		});
 	},
 	async down(queryInterface, Sequelize) {
-		await queryInterface.dropTable('Items');
+		await queryInterface.dropTable('items');
 	}
 };

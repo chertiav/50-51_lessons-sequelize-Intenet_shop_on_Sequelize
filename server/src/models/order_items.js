@@ -1,24 +1,24 @@
 'use strict';
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-	class Order_items extends Model {
+	class Order_Items extends Model {
 		static associate(models) {
 		}
 	}
-	Order_items.init({
-		orderId: {
+	Order_Items.init({
+		order_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
-		itemId: {
+		item_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			},
 		amount: DataTypes.INTEGER,
 	}, {
 		sequelize,
-		modelName: 'Order_items',
-		timestamps: false
+		modelName: 'Order_Items',
+		tableName:'order_items'
 	});
-	return Order_items;
+	return Order_Items;
 };

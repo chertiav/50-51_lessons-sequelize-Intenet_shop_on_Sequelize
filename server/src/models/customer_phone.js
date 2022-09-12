@@ -1,21 +1,15 @@
 'use strict';
 const {	Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-	class Customer_phone extends Model {
+	class Customer_Phone extends Model {
 		static associate({Customer}) {
-			this.belongsTo(Customer, {foreignKey: 'customerId'});
+			this.belongsTo(Customer, {foreignKey: 'customer_id'});
 		}
 	}
-	Customer_phone.init({
-		phoneId: {
+	Customer_Phone.init({
+		customer_id: {
 			allowNull: false,
-			autoIncrement: true,
-			primaryKey: true,
-			type: DataTypes.INTEGER
-		},
-		customerId: {
-			allowNull: false,
-			type: DataTypes.INTEGER
+			type: DataTypes.INTEGER,
 		},
 		type: {
 			type: DataTypes.ENUM('рабочий', 'домашний'),
@@ -30,8 +24,8 @@ module.exports = (sequelize, DataTypes) => {
 	},
 	{
 		sequelize,
-		modelName: 'Customer_phone',
-		timestamps: false
+		modelName: 'Customer_Phone',
+		tableName:'customer_phones'
 	});
-	return Customer_phone;
+	return Customer_Phone;
 };

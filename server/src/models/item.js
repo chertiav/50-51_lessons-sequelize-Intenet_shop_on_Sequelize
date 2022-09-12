@@ -3,36 +3,30 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
 	class Item extends Model {
 		static associate({
-			Item_category, Item_type,
-			Item_model, Store, Order
+			Item_Category, Item_Type,
+			Item_Model, Store, Order
 		}) {
-			this.belongsTo(Item_category, {foreignKey: 'categId'});
-			this.belongsTo(Item_type, {foreignKey: 'typeId'});
-			this.belongsTo(Item_model, {foreignKey: 'modelId'});
-			this.belongsTo(Store, {foreignKey: 'storeId'});
-			this.belongsToMany(Order, {through: 'Order_items', foreignKey: 'itemId'});
+			this.belongsTo(Item_Category, {foreignKey: 'categ_id'});
+			this.belongsTo(Item_Type, {foreignKey: 'type_id'});
+			this.belongsTo(Item_Model, {foreignKey: 'model_id'});
+			this.belongsTo(Store, {foreignKey: 'store_id'});
+			this.belongsToMany(Order, {through: 'Order_Items', foreignKey: 'item_id'});
 		}
 	}
 	Item.init({
-		itemId: {
-			allowNull: false,
-			autoIncrement: true,
-			primaryKey: true,
-			type: DataTypes.INTEGER
-		},
-		categId: {
+		categ_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
-		typeId: {
+		type_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
-		modelId: {
+		model_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
-		storeId: {
+		store_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
@@ -46,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
 	}, {
 		sequelize,
 		modelName: 'Item',
-		timestamps: false
+		tableName:'items'
 	});
 	return Item;
 };

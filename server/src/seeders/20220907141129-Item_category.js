@@ -1,19 +1,13 @@
 'use strict';
 
-const categories = [
-	{title:'Ноутбуки и компьютеры', description: ''},
-	{title:'Смартфоны, ТВ и электроника', description: ''},
-	{title:'Бытовая техника', description: ''},
-	{title:'Инструменты и автотовары', description: ''},
-	{title:'Сантехника и ремонт', description: ''},
-]
+const {categories} = require('../constants/internetShop-db-constants')
 
 module.exports = {
 	async up (queryInterface, Sequelize) {
-			await queryInterface.bulkInsert('Item_categories', categories, {});
+			await queryInterface.bulkInsert('item_categories', categories, {});
 	},
 
 	async down (queryInterface, Sequelize) {
-		await queryInterface.bulkDelete('Item_categories', null, {});
+		await queryInterface.bulkDelete('item_categories', null, {});
 	}
 };

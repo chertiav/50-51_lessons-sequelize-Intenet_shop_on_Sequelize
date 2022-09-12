@@ -3,18 +3,12 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
 	class Order extends Model {
 		static associate({Customer, Item}) {
-			this.belongsTo(Customer, {foreignKey: 'customerId'});
-			this.belongsToMany(Item, {through: 'Order_items', foreignKey: 'orderId'});
+			this.belongsTo(Customer, {foreignKey: 'customer_id'});
+			this.belongsToMany(Item, {through: 'Order_Items', foreignKey: 'order_id'});
 		}
 	}
 	Order.init({
-		orderId: {
-			allowNull: false,
-			autoIncrement: true,
-			primaryKey: true,
-			type: DataTypes.INTEGER
-		},
-		customerId: {
+		customer_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
@@ -34,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
 	}, {
 		sequelize,
 		modelName: 'Order',
-		timestamps: false
+		tableName:'orders'
 	});
 	return Order;
 };
