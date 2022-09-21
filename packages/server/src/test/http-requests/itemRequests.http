@@ -1,0 +1,59 @@
+GET http://localhost:5000/api/items HTTP/1.1
+Content-Type: application/json
+
+
+###
+
+GET http://localhost:5000/api/items/5 HTTP/1.1
+Content-Type: application/json
+
+
+###
+
+POST http://localhost:5000/api/items HTTP/1.1
+Content-Type: application/json
+
+{
+  "categ_id": 1,
+  "type_id": 1,
+  "model_id": 3,
+  "store_id": 5,
+  "title": "new item",
+  "amount": 1,
+  "price": 100000,
+  "description": "POST"
+}
+
+
+###
+
+PUT http://localhost:5000/api/items HTTP/1.1
+Content-Type: application/json
+
+{
+	"id": 786,
+  "categ_id": 1,
+  "type_id": 1,
+  "model_id": 3,
+  "store_id": 5,
+  "title": "new item",
+  "amount": 1,
+  "price": 100000,
+  "description": "PUT"
+}
+
+
+###
+
+PATCH http://localhost:5000/api/items/786 HTTP/1.1
+Content-Type: application/json
+
+{
+  "description": "PATCH"
+}
+
+
+###
+
+DELETE http://localhost:5000/api/items/786 HTTP/1.1
+Content-Type: application/json
