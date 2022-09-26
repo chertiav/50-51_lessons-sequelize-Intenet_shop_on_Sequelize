@@ -1,17 +1,19 @@
-import {Router} from 'express';
+import { Router } from 'express';
 //==============================
 import brandControllers from '../controllers/brandControllers';
 
 const brandRouter = new Router();
 
-brandRouter.route('/')
+brandRouter
+	.route('/')
 	.get(brandControllers.getBrands)
 	.post(brandControllers.createBrand)
-	.put(brandControllers.updatedBrand)
+	.put(brandControllers.updatedBrand);
 
-brandRouter.route('/:id')
+brandRouter
+	.route('/:id')
 	.get(brandControllers.getOneBrand)
 	.patch(brandControllers.changeBrand)
-	.delete(brandControllers.deleteBrand)
+	.delete(brandControllers.deleteBrand);
 
 export default brandRouter;

@@ -6,7 +6,7 @@ module.exports = {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
-				type: Sequelize.INTEGER
+				type: Sequelize.INTEGER,
 			},
 			name: {
 				type: Sequelize.STRING,
@@ -15,18 +15,18 @@ module.exports = {
 			email: {
 				type: Sequelize.STRING,
 				allowNull: false,
-				unique: true
+				unique: true,
 			},
 			password: {
 				type: Sequelize.STRING,
 				allowNull: false,
 			},
 			description: {
-				type: Sequelize.TEXT
-			}
+				type: Sequelize.TEXT,
+			},
 		});
 	},
 	async down(queryInterface, Sequelize) {
 		await queryInterface.dropTable('customers');
-	}
+	},
 };

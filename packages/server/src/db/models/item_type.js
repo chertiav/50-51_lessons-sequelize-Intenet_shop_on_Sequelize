@@ -2,21 +2,28 @@
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
 	class Item_Type extends Model {
-		static associate({Item}) {
-			this.hasMany(Item, {foreignKey: 'type_id'});
+		static associate({ Item }) {
+			this.hasMany(Item, {
+				foreignKey: 'type_id',
+				onDelete: 'SET NULL',
+				onUpdate: 'CASCADE',
+			});
 		}
 	}
-	Item_Type.init({
-		title: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			unique: true
+	Item_Type.init(
+		{
+			title: {
+				type: DataTypes.STRING,
+				allowNull: false,
+				unique: true,
+			},
+			description: DataTypes.TEXT,
 		},
-		description: DataTypes.TEXT,
-	}, {
-		sequelize,
-		modelName: 'Item_Type',
-		tableName:'item_types'
-	});
+		{
+			sequelize,
+			modelName: 'Item_Type',
+			tableName: 'item_types',
+		},
+	);
 	return Item_Type;
 };

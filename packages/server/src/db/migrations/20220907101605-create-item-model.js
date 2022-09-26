@@ -6,26 +6,27 @@ module.exports = {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
-				type: Sequelize.INTEGER
+				type: Sequelize.INTEGER,
 			},
 			brand_id: {
-				allowNull: false,
 				type: Sequelize.INTEGER,
 				references: {
 					model: 'brands',
 					key: 'id',
 				},
+				onDelete: 'SET NULL',
+				onUpdate: 'CASCADE',
 			},
 			title: {
 				type: Sequelize.STRING,
 				allowNull: false,
 			},
 			description: {
-				type: Sequelize.TEXT
+				type: Sequelize.TEXT,
 			},
 		});
 	},
 	async down(queryInterface, Sequelize) {
 		await queryInterface.dropTable('item_models');
-	}
+	},
 };

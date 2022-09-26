@@ -6,15 +6,16 @@ module.exports = {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
-				type: Sequelize.INTEGER
+				type: Sequelize.INTEGER,
 			},
 			customer_id: {
 				type: Sequelize.INTEGER,
-				allowNull: false,
 				references: {
 					model: 'customers',
 					key: 'id',
 				},
+				onDelete: 'SET NULL',
+				onUpdate: 'CASCADE',
 			},
 			code: {
 				type: Sequelize.STRING,
@@ -29,11 +30,11 @@ module.exports = {
 				allowNull: false,
 			},
 			description: {
-				type: Sequelize.TEXT
+				type: Sequelize.TEXT,
 			},
 		});
 	},
 	async down(queryInterface, Sequelize) {
 		await queryInterface.dropTable('orders');
-	}
+	},
 };

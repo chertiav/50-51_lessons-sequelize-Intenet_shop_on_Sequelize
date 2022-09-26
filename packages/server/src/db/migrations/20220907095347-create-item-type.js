@@ -6,19 +6,19 @@ module.exports = {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
-				type: Sequelize.INTEGER
+				type: Sequelize.INTEGER,
 			},
 			title: {
 				type: Sequelize.STRING,
 				allowNull: false,
-				unique: true
+				unique: true,
 			},
 			description: {
-				type: Sequelize.TEXT
+				type: Sequelize.TEXT,
 			},
 		});
 	},
 	async down(queryInterface, Sequelize) {
 		await queryInterface.dropTable('item_types');
-	}
+	},
 };

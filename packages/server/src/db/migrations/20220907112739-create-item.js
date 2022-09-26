@@ -6,56 +6,60 @@ module.exports = {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
-				type: Sequelize.INTEGER
+				type: Sequelize.INTEGER,
 			},
 			categ_id: {
 				type: Sequelize.INTEGER,
-				allowNull: false,
 				references: {
 					model: 'item_categories',
 					key: 'id',
 				},
+				onDelete: 'SET NULL',
+				onUpdate: 'CASCADE',
 			},
 			type_id: {
 				type: Sequelize.INTEGER,
-				allowNull: false,
 				references: {
 					model: 'item_types',
 					key: 'id',
 				},
+				onDelete: 'SET NULL',
+				onUpdate: 'CASCADE',
 			},
 			model_id: {
 				type: Sequelize.INTEGER,
-				allowNull: false,
 				references: {
 					model: 'item_models',
 					key: 'id',
 				},
+				onDelete: 'SET NULL',
+				onUpdate: 'CASCADE',
 			},
 			store_id: {
 				type: Sequelize.INTEGER,
-				allowNull: false,
 				references: {
 					model: 'stores',
 					key: 'id',
 				},
+				onDelete: 'SET NULL',
+				onUpdate: 'CASCADE',
 			},
 			title: {
 				type: Sequelize.STRING,
 				allowNull: false,
 			},
 			amount: {
-				type: Sequelize.INTEGER
+				type: Sequelize.INTEGER,
 			},
 			price: {
-				type: Sequelize.REAL
+				type: Sequelize.REAL,
 			},
 			description: {
-				type: Sequelize.TEXT
+				type: Sequelize.TEXT,
 			},
 		});
 	},
 	async down(queryInterface, Sequelize) {
 		await queryInterface.dropTable('items');
-	}
+	},
 };

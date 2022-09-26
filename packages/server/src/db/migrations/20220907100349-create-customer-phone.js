@@ -6,15 +6,16 @@ module.exports = {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
-				type: Sequelize.INTEGER
+				type: Sequelize.INTEGER,
 			},
 			customer_id: {
-				allowNull: false,
 				type: Sequelize.INTEGER,
 				references: {
 					model: 'customers',
 					key: 'id',
 				},
+				onDelete: 'SET NULL',
+				onUpdate: 'CASCADE',
 			},
 			type: {
 				type: Sequelize.ENUM('рабочий', 'домашний'),
@@ -23,14 +24,14 @@ module.exports = {
 			number: {
 				type: Sequelize.STRING,
 				allowNull: false,
-				unique: true
+				unique: true,
 			},
 			description: {
-				type: Sequelize.TEXT
+				type: Sequelize.TEXT,
 			},
 		});
 	},
 	async down(queryInterface, Sequelize) {
 		await queryInterface.dropTable('customer_phones');
-	}
+	},
 };

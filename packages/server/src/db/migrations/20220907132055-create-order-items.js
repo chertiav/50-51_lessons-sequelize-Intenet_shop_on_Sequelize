@@ -6,28 +6,30 @@ module.exports = {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
-				type: Sequelize.INTEGER
+				type: Sequelize.INTEGER,
 			},
 			order_id: {
 				type: Sequelize.INTEGER,
-				allowNull: false,
 				references: {
 					model: 'orders',
-					key: 'id'
-				}
+					key: 'id',
+				},
+				onDelete: 'SET NULL',
+				onUpdate: 'CASCADE',
 			},
 			item_id: {
 				type: Sequelize.INTEGER,
-				allowNull: false,
 				references: {
 					model: 'items',
-					key: 'id'
-				}
+					key: 'id',
+				},
+				onDelete: 'SET NULL',
+				onUpdate: 'CASCADE',
 			},
 			amount: Sequelize.INTEGER,
 		});
 	},
 	async down(queryInterface, Sequelize) {
 		await queryInterface.dropTable('order_items');
-	}
+	},
 };
